@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            width: 300px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #task-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        #add-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #add-btn:hover {
+            background-color: #45a049;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        li.completed span {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        .delete-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: darkred;
+        }
+
+        .task {
+            flex: 1;
+        }
+
+        .task:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <input type="text" id="task-input" placeholder="Enter a new task" />
+        <button id="add-btn">Add Task</button>
+        <ul id="task-list"></ul>
+    </div>
+
+    <script>
+        // Get elements
+        const taskInput = document.getElementById('task-input');
+        const addButton = document.getElementById('add-btn');
+        const taskList = document.getElementById('task-list');
+
+        // Load tasks from localStorage
+        document.addEventListener('DOMContentLoaded', loadTasks);
+
+        // Add new task
+        addButton.addEventListener('click', addTask);
+        taskInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                addTask();
+            }
+        });
+
+        // Add task function
+        function addTask() {
+            const taskText = taskInput.value.trim();
+            if (taskText === '') {
+                alert('Please enter a task.');
+                return;
+            }
+
+            // Create task item
+            const li = document.createElement('li');
+            li.classList.add('task-item');
+
+            // Task text
+            const span = document.createElement('span');
+            span.classList.add('task');
+            span.textContent = taskText;
+            span.addEventListener('click', toggleCompletion);
+            li.appendChild(span);
+
+            // Delete button
+            const deleteButton = document.createElement('button');
+            deleteButton.classList.add('delete-btn');
+            deleteButton.textContent = 'X';
+            deleteButton.addEventListener('click', deleteTask);
+            li.appendChild(deleteButton);
+
+            // Add task to the list and clear input field
+            taskList.appendChild(li);
+            taskInput.value = '';
+
+            // Save tasks to localStorage
+            saveTasks();
+        }
+
+        // Toggle task completion
+        function toggleCompletion(event) {
+            event.target.parentElement.classList.toggle('completed');
+            saveTasks();
+        }
+
+        // Delete task
+        function deleteTask(event) {
+            event.target.parentElement.remove();
+            saveTasks();
+        }
+
+        // Save tasks to localStorage
+        function saveTasks() {
+            const tasks = [];
+            const taskItems = document.querySelectorAll('.task-item');
+            taskItems.forEach(item => {
+                const taskText = item.querySelector('.task').textContent;
+                const isCompleted = item.classList.contains('completed');
+                tasks.push({ taskText, isCompleted });
+            });
+
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        // Load tasks from localStorage
+        function loadTasks() {
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            tasks.forEach(task => {
+                const li = document.createElement('li');
+                li.classList.add('task-item');
+                if (task.isCompleted) {
+                    li.classList.add('completed');
+                }
+
+                const span = document.createElement('span');
+                span.classList.add('task');
+                span.textContent = task.taskText;
+                span.addEventListener('click', toggleCompletion);
+                li.appendChild(span);
+
+                const deleteButton = document.createElement('button');
+                deleteButton.classList.add('delete-btn');
+                deleteButton.textContent = 'X';
+                deleteButton.addEventListener('click', deleteTask);
+                li.appendChild(deleteButton);
+
+                taskList.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
