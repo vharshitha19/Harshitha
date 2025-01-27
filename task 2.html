@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boat Earphones - Buy Now</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #212121;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        header nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        .product {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 40px;
+            background-color: white;
+            margin-top: 30px;
+        }
+
+        .product-image img {
+            max-width: 300px;
+            width: 500%;
+        }
+
+        .product-details {
+            max-width: 500px;
+            padding: 20px;
+            margin-left: 20px;
+        }
+
+        .product-details h1 {
+            font-size: 32px;
+            color: #212121;
+        }
+
+        .product-details .description {
+            color: #555;
+            margin: 15px 0;
+        }
+
+        .product-details .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff5722;
+        }
+
+        .cta-button {
+            background-color: #ff5722;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .cta-button:hover {
+            background-color: #e64a19;
+        }
+
+        .additional-images img {
+            width: 20%;
+            margin: 10px;
+        }
+
+        .reviews {
+            background-color: #f9f9f9;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .reviews .review {
+            background-color: #ffffff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .newsletter {
+            text-align: center;
+            padding: 40px 0;
+            background-color: #212121;
+            color: white;
+        }
+
+        .newsletter form {
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .newsletter input {
+            padding: 10px;
+            width: 250px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            margin-right: 10px;
+        }
+
+        .newsletter button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #212121;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        footer .social-media a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        footer .social-media a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .product {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product-details {
+                margin-left: 0;
+                text-align: center;
+            }
+
+            .additional-images img {
+                width: 90%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Boat Earphones</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Learn More</a>
+            <a href="#">Contact Us</a>
+        </nav>
+    </header>
+
+    <section class="product">
+        <div class="product-image">
+            <img src="https://5.imimg.com/data5/SELLER/Default/2023/1/RI/LV/NJ/9670299/boat-rockerz-450-bluetooth-on-ear-headphones-with-mic-500x500.jpg" alt="Boat Earphones" />
+        </div>
+        <div class="product-details">
+            <h1>Boat Earphones</h1>
+            <p class="description">Experience high-quality sound with Boat Earphones. Designed for comfort and superior sound quality for all your music needs.</p>
+            <p class="price">$59.99</p>
+            <button class="cta-button" onclick="addToCart()">Add to Cart</button>
+        </div>
+    </section>
+
+    <section class="additional-images">
+        <img src="https://www.boat-lifestyle.com/cdn/shop/products/eb8e0fbd-c412-48b3-9c91-5b49ddf35800.png?v=1673002681" alt="Boat Earphones - Side view" />
+        <img src="https://m.media-amazon.com/images/I/51FNnHjzhQL.jpg" alt="Boat Earphones - In hand" />
+    </section>
+
+    <section class="reviews">
+        <h2>Customer Reviews</h2>
+        <div class="review">
+            <p>"These earphones have amazing sound quality, and they are super comfortable!" - Alex</p>
+        </div>
+        <div class="review">
+            <p>"I love the bass! Perfect for workout sessions." - Emma</p>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <h2>Sign up for our newsletter</h2>
+        <form action="#">
+            <input type="email" placeholder="Enter your email" required />
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="social-media">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+        <p>&copy; 2025 Boat Earphones. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function addToCart() {
+            alert("Boat Earphones added to your cart!");
+        }
+    </script>
+</body>
+</html>
